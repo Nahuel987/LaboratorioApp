@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}  <!-- Carga widget_tweaks al inicio de la plantilla -->
+
+{% block content %}
+<h2 style="text-align: center;">Ingresar los Datos del Laboratorio</h2>
+
+<div style="border: 1px solid #ccc; padding: 20px; width: 60%; margin: auto; text-align: center; box-shadow: 5px 5px 10px #ccc;">
+    <form method="post" style="text-align: left;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            <label for="id_nombre" style="display: inline-block; width: 100px; font-weight: bold;">Nombre:</label>
+            {{ form.nombre|add_class:"form-control" }}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="id_ciudad" style="display: inline-block; width: 100px; font-weight: bold;">Ciudad:</label>
+            {{ form.ciudad|add_class:"form-control" }}
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="id_pais" style="display: inline-block; width: 100px; font-weight: bold;">País:</label>
+            {{ form.pais|add_class:"form-control" }}
+        </div>
+
+        <button type="submit" style="padding: 5px 15px; font-weight: bold; background-color: #e0e0e0; border: 1px solid #ccc;">Enviar</button>
+    </form>
+</div>
+{% endblock %}
