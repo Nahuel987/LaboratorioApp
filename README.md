@@ -6,65 +6,66 @@ Este proyecto es una aplicación de Django para gestionar laboratorios, director
 
 - Python 3.x
 - Django
-- PostgreSQL (u otra base de datos compatible)
+- PostgreSQL 
 
 ## Instalación
 
 1. **Clona el repositorio**:
-   ```bash
-   git clone https://github.com/tu_usuario/tu_repositorio.git
-   cd tu_repositorio
-
+  
+  
 2. **Crea y activa un entorno virtual**:
    ```bash
-  python -m venv entorno
-  source entorno/bin/activate
+   python -m venv entorno
+   source entorno/bin/activate  # En Windows: entorno\Scripts\activate
+   ```
 
 3. **Instala las dependencias**:
    ```bash
-  pip install -r requirements.txt
+   pip install -r requirements.txt
+   ```
 
-4. **Configura la base de datoss**:
+4. **Configura la base de datos**:
+   En el archivo `settings.py`, ajusta la configuración de la base de datos:
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'db_final_orm',
+           'USER': 'userdjango',
+           'PASSWORD': 'userdjango',
+           'HOST': 'localhost',
+           'PORT': '5432',
+       }
+   }
+   ```
+
+5. **Aplica las migraciones**:
    ```bash
-  DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nombre_db',
-        'USER': 'usuario_db',
-        'PASSWORD': 'contraseña_db',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+   python manage.py migrate
+   ```
 
-5. **Aplica las migraciones:**:
+6. **Crea un superusuario**:
    ```bash
-  python manage.py migrate
+   python manage.py createsuperuser
+   ```
 
-6. **Crea un superusuario:**:
-   ```bash
-  python manage.py createsuperuser
-
-## Instalación
+## Uso
 
 1. **Ejecuta el servidor de desarrollo**:
    ```bash
    python manage.py runserver
+   ```
 
 2. **Accede al panel de administración**:
-   ```bash
-   URL: http://127.0.0.1:8000/admin
-   Usa las credenciales del superusuario que creaste anteriormente.
+   - URL: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
+   - Usa las credenciales del superusuario que creaste anteriormente.
 
-## Estructura de las URLs
+## Estructura de las URLs del Administrador
 
-1. **Ingresar**:
-   ```bash
-   http://127.0.0.1:8000/laboratorio/ingresar/
-   Con esta url puedes ingresar un nuevo laboratorio
+1. **Ingresar un nuevo laboratorio**:
+   - URL: [http://127.0.0.1:8000/laboratorio/ingresar/](http://127.0.0.1:8000/laboratorio/ingresar/)
+   - Permite agregar un nuevo laboratorio.
 
 2. **Ver listado de laboratorios**:
-   ```bash
-   http://127.0.0.1:8000/laboratorio/mostrar/
-   Con esta url puedes ver los laboratorios ingresados, ademas desde alli puedes actualizarlos o eliminarlos
-   
+   - URL: [http://127.0.0.1:8000/laboratorio/mostrar/](http://127.0.0.1:8000/laboratorio/mostrar/)
+   - Permite ver los laboratorios ingresados y desde allí actualizarlos o eliminarlos.
